@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+	<testsuite name="appointments.tests.AppointmentsIndexViewTests-20250904000038" tests="2" file="appointments/tests.py" time="0.073" timestamp="2025-09-04T00:00:38" failures="0" errors="0" skipped="0">
+		<testcase classname="appointments.tests.AppointmentsIndexViewTests" name="test_index" time="0.044" timestamp="2025-09-04T00:00:38" file="appointments/tests.py" line="16">
+			<!--Test the response when a service is selected-->
+		</testcase>
+		<testcase classname="appointments.tests.AppointmentsIndexViewTests" name="test_index_hairdresser" time="0.029" timestamp="2025-09-04T00:00:38" file="appointments/tests.py" line="22">
+			<!--Test selecting a service & hairdresser returns dates.
+        Then create a midday appointment.-->
+		</testcase>
+	</testsuite>
+</testsuites>
