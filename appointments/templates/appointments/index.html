@@ -64,6 +64,11 @@
     {% if start_times_all %}
     <h2 id="time">Time</h2>
 
+<<<<<<< HEAD
+=======
+    <!-- FIX THIS: Add the section here to display number of available appointments -->
+
+>>>>>>> 32da721 (Initial commit by AWS CodeCommit)
     <form method="post" action="{% url 'create' %}">
         {% csrf_token %}
         <input type="hidden" name="service" value="{{selected_service_id}}">
