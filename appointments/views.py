@@ -7,12 +7,14 @@ from django.contrib import messages
 from django.utils import timezone
 
 # Lab 3 update 1 start.
+import boto3
 
 # Lab 3 update 1 end.
 
 from .models import Service, Hairdresser, Appointment
 
 # Lab 3 update 2 start.
+dynamodb = boto3.client("dynamodb")
 
 # Lab 3 update 2 end.
 
@@ -51,6 +53,8 @@ def index(request, service_id=None, hairdresser_id=None, date_string=None):
     context = {"services_all": services}
 
     # Lab 3 update 3 start.
+    announcements = dynamodb.scan(TableName="DEV_Announcement")
+    context["announcements"] = [ a['Contents']['S'] for a in announcements['Items'] ]
 
     # Lab 3 update 3 end.
 

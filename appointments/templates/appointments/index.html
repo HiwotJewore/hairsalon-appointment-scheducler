@@ -9,6 +9,13 @@
 {% endif %}
 
 <!-- Lab 3 update 4 start. -->
+{% if announcements %}
+    {% for announcement in announcements %}
+        <div class="alert alert-secondary" role="alert">
+            {{ announcement }}
+        </div>
+    {% endfor %}
+{% endif %}
 
 <!-- Lab 3 update 4 end. -->
 
