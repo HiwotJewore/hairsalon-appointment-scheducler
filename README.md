@@ -1,23 +1,22 @@
-# Lab 5 - Hair Salon Appointment Scheduler Enhancements
+# Hair Salon Appointment Scheduler
 
-This folder contains Lab 5 updates for the Hair Salon Appointment Scheduler application.
+This project is a web application for scheduling hair salon appointments. It helps salon staff manage bookings efficiently and ensures clients’ appointments are tracked reliably.  
 
-## Overview
-Lab 5 focuses on extending the functionality of the appointment scheduler by implementing:
+## Key Features
 
-- Improved scheduling logic for client appointments
-- Validation for stylist availability
-- User-friendly input and error handling
-- Backend enhancements for future scalability
+- Schedule, view, and manage appointments  
+- Simple and clean user interface  
+- Email reminders for upcoming appointments  
 
-## Usage
-1. Navigate to the project directory
-2. Run the application using the instructions provided in the main project
-3. Review added features and test thoroughly
+## What We Did in Lab 5
 
-## Author
-Hiwot Jewore, AWS Cloud Developer Trainee
+1. **Database Upgrade** – Switched from SQLite to **Amazon RDS** for a scalable, cloud-based database.  
+2. **Data Verification** – Verified that appointments are correctly written to the database.  
+3. **Docker & CI/CD** – Added a `Dockerfile` for containerization and `buildspecs` for automated testing.  
+4. **Professional README** – Documented the project so it’s easy for anyone to understand and use.  
 
-## Repository
-[Hair Salon Appointment Scheduler](https://github.com/HiwotJewore/hairsalon-appointment-scheducler)
+## How It Works
 
+1. Users add an appointment through the app.  
+2. The app writes the appointment to **RDS**.  
+3. Staff can view upcoming appointments and manage them efficiently.
