@@ -8,21 +8,16 @@ from django.utils import timezone
 
 from .models import Service, Hairdresser, Appointment
 
-<<<<<<< HEAD
+
 def intervals_overlap(startime_1, end1, startime_2, end2):
     "Check if one interval starts after the other one ends"
     return not (end1 <= startime_2 or end2 <= startime_1)
-=======
-def intervals_overlap(start1, end1, start2, end2):
-    "Check if one interval starts after the other one ends"
-    return not (end1 <= start2 or end2 <= start1)
->>>>>>> 32da721 (Initial commit by AWS CodeCommit)
+
 
 def build_start_times(day_start, service_duration, blocked_times):
     "Build a list of start times for a given day"
     start_times = []
     for mins in range(0, 540, 30):
-<<<<<<< HEAD
         time_1 = day_start + datetime.timedelta(minutes=mins)
         time_2 = time_1 + datetime.timedelta(minutes=service_duration)
         is_blocked = False
@@ -38,28 +33,9 @@ def build_start_times(day_start, service_duration, blocked_times):
 
         start_times.append(
             {"time_formatted": time_1.strftime("%H:%M"), "is_blocked": is_blocked}
-=======
-        t1 = day_start + datetime.timedelta(minutes=mins)
-        t2 = t1 + datetime.timedelta(minutes=service_duration)
-        is_blocked = False
-
-        # Do not allow appointments in the past.
-        if t1 < timezone.now():
-            is_blocked = True
-        else:
-        # Test if the start time will overlap with any of the blocked times.
-            for time in blocked_times:
-                if intervals_overlap(time[0], time[1], t1, t2):
-                    is_blocked = True
-
-        start_times.append(
-            {
-                "time_formatted": t1.strftime("%H:%M"),
-                "is_blocked": is_blocked
-            }
->>>>>>> 32da721 (Initial commit by AWS CodeCommit)
         )
     return start_times
+
 
 def index(request, service_id=None, hairdresser_id=None, date_string=None):
     "View for selecting service, hairdresser, date and time"
@@ -100,22 +76,17 @@ def index(request, service_id=None, hairdresser_id=None, date_string=None):
                     hour=9, minute=0, second=0, microsecond=0
                 )
                 service_duration = Service.objects.get(service_id=service_id).duration
-<<<<<<< HEAD
                 start_times = build_start_times(
                     day_start, service_duration, blocked_times
                 )
 
                 context["start_times_all"] = start_times
+                context["start_times_available_count"] = len(
+                    [t for t in start_times if not t["is_blocked"]]
+                )
 
-=======
-                start_times = build_start_times(day_start, service_duration, blocked_times)
-
-                context["start_times_all"] = start_times
-
-                #FIX THIS: Add code here to count the available appointments and store them in a context variable.
-
->>>>>>> 32da721 (Initial commit by AWS CodeCommit)
     return render(request, "appointments/index.html", context)
+
 
 def create(request):
     "View for creating an appointment"
@@ -128,17 +99,11 @@ def create(request):
 
         service = Service.objects.get(service_id=service_id)
         hairdresser = Hairdresser.objects.get(hairdresser_id=hairdresser_id)
-<<<<<<< HEAD
         start_datetime = timezone.make_aware(
             datetime.datetime.strptime(
                 date_string + " " + appointment_time, "%Y%m%d %H:%M"
             )
         )
-=======
-        start_datetime = timezone.make_aware(datetime.datetime.strptime(
-            date_string + " " + appointment_time, "%Y%m%d %H:%M"
-        ))
->>>>>>> 32da721 (Initial commit by AWS CodeCommit)
         end_datetime = start_datetime + datetime.timedelta(minutes=service.duration)
 
         Appointment.objects.create(

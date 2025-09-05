@@ -8,6 +8,10 @@
     {% endfor %}
 {% endif %}
 
+<!-- Lab 3 update 4 start. -->
+
+<!-- Lab 3 update 4 end. -->
+
     <h2>Services</h2>
 
     <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
@@ -63,13 +67,8 @@
 
     {% if start_times_all %}
     <h2 id="time">Time</h2>
-
-<<<<<<< HEAD
-=======
-    <!-- FIX THIS: Add the section here to display number of available appointments -->
     <p>{{start_times_available_count}} start times available</p>
 
->>>>>>> 32da721 (Initial commit by AWS CodeCommit)
     <form method="post" action="{% url 'create' %}">
         {% csrf_token %}
         <input type="hidden" name="service" value="{{selected_service_id}}">
